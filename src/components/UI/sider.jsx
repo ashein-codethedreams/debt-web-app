@@ -40,7 +40,6 @@ const Sider = () => {
         zIndex: 98,
       }}
       selectedKeys={selectedKeys}
-      defaultSelectedKeys={["1"]}
       mode="inline"
       items={items}
     />
