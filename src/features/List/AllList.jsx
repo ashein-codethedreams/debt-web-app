@@ -1,12 +1,12 @@
 import MainLayout from "../../components/UI/Layout";
 
-const NewList = () => {
+const AllList = () => {
   return (
     <div>
       <MainLayout>
-        <h1>New List Adding Form</h1>
+        <h1>Testing</h1>
       </MainLayout>
     </div>
   );
 };
-export default NewList;
+export default AllList;

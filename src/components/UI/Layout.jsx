@@ -4,7 +4,7 @@ import { Layout } from "antd";
 
 const { Header, Content } = Layout;
 
-const MainLayout = () => {
+const MainLayout = ({ children }) => {
   return (
     <Layout>
       <Header
@@ -23,7 +23,7 @@ const MainLayout = () => {
         <Sider />
       </Layout>
       <Layout>
-        <Content />
+        <Content style={{ height: "100vh" }}>{children}</Content>
       </Layout>
     </Layout>
   );
