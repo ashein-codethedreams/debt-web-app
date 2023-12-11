@@ -23,7 +23,9 @@ const MainLayout = ({ children }) => {
         <Sider />
       </Layout>
       <Layout>
-        <Content style={{ height: "100vh" }}>{children}</Content>
+        <Content style={{ marginLeft: "250px", height: "100vh" }}>
+          {children}
+        </Content>
       </Layout>
     </Layout>
   );
