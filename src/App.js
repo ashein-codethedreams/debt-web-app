@@ -1,11 +1,10 @@
-
-import './App.css';
-import Sider from './components/UI/sider';
+import "./App.css";
+import MainLayout from "./components/UI/Layout";
 
 function App() {
   return (
     <div className="App">
-    <Sider />
+      <MainLayout />
     </div>
   );
 }

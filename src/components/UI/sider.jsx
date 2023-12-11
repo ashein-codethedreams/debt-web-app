@@ -12,7 +12,7 @@ function getItem(label, key, icon, children, type) {
 }
 const items = [
   getItem("View List", "1", <UnorderedListOutlined />),
-  getItem("Add new to List", "2", <PlusCircleOutlined />),
+  getItem("Add new List", "2", <PlusCircleOutlined />),
 ];
 const Sider = () => {
   const onClick = (e) => {
@@ -22,7 +22,10 @@ const Sider = () => {
     <Menu
       onClick={onClick}
       style={{
-        width: 256,
+        width: 250,
+        height: "100vh",
+        position: "fixed",
+        zIndex: 98,
       }}
       defaultSelectedKeys={["1"]}
       mode="inline"
