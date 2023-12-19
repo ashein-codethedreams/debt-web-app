@@ -1,8 +1,17 @@
-import { Button, DatePicker, Form, Input, Modal } from "antd";
+import {
+  Button,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Modal,
+  Select,
+} from "antd";
 import MainLayout from "../../components/UI/Layout";
 import { useState } from "react";
 
 const NewList = () => {
+  const [form] = Form.useForm();
   const [isModal, setIsModal] = useState(false);
 
   const closeModal = () => {
@@ -10,6 +19,7 @@ const NewList = () => {
   };
   const handleOnAdd = (data) => {
     console.log(data);
+    form.resetFields();
   };
   return (
     <div>
@@ -24,12 +34,18 @@ const NewList = () => {
         </Button>
         <Modal
           open={isModal}
-          footer={<Button htmlType="submit">Submit</Button>}
+          footer={
+            <Button form="form" htmlType="submit">
+              Submit
+            </Button>
+          }
           onCancel={closeModal}
           title={"Add new list"}
         >
           <br />
           <Form
+            form={form}
+            id="form"
             colon={false}
             labelCol={{
               span: 4,
@@ -45,7 +61,7 @@ const NewList = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your username!",
+                  message: "can't be blank!",
                 },
               ]}
             >
@@ -58,11 +74,23 @@ const NewList = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your password!",
+                  message: "can't be blank!",
                 },
               ]}
             >
-              <Input />
+              <Select
+                placeholder="Choose Payer"
+                options={[
+                  {
+                    value: 0,
+                    label: "Zon",
+                  },
+                  {
+                    value: 1,
+                    label: "Ashein",
+                  },
+                ]}
+              />
             </Form.Item>
             <Form.Item
               label="ရက်စွဲ"
@@ -70,7 +98,7 @@ const NewList = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your password!",
+                  message: "can't be blank!",
                 },
               ]}
             >
@@ -83,7 +111,8 @@ const NewList = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your password!",
+                  pattern: /^\d+$/,
+                  message: "must be number!",
                 },
               ]}
             >
