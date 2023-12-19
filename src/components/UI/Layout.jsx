@@ -23,7 +23,9 @@ const MainLayout = ({ children }) => {
         <Sider />
       </Layout>
       <Layout>
-        <Content style={{ marginLeft: "250px", height: "100vh" }}>
+        <Content
+          style={{ marginLeft: "250px", paddingTop: "30px", height: "100vh" }}
+        >
           {children}
         </Content>
       </Layout>

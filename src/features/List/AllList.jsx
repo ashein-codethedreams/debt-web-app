@@ -51,7 +51,7 @@ const AllList = () => {
   return (
     <div>
       <MainLayout>
-        <h1>All History</h1>
+        <p className="text-lg font-semibold">All History</p>
         <Table
           style={{ margin: "30px" }}
           dataSource={dataSource}
