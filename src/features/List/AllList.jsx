@@ -34,6 +34,15 @@ const columns = [
 const AllList = () => {
   const [lists, setLists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    const day = date.getUTCDate().toString().padStart(2, "0");
+    const month = (date.getUTCMonth() + 1).toString().padStart(2, "0");
+    const year = date.getUTCFullYear();
+
+    return `${day}/${month}/${year}`;
+  }
+
   useEffect(() => {
     setIsLoading(true);
     const fetchLists = async () => {
@@ -52,7 +61,7 @@ const AllList = () => {
           id: key,
           title: responseData[key].item_name,
           name: responseData[key].payer_name,
-          date: responseData[key].date,
+          date: formatDate(responseData[key].date),
           amount: responseData[key].amount,
         });
       }
