@@ -1,25 +1,35 @@
-import {
-  Button,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Modal,
-  Select,
-} from "antd";
+import { Button, DatePicker, Form, Input, Modal, Select } from "antd";
 import MainLayout from "../../components/UI/Layout";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const NewList = () => {
   const [form] = Form.useForm();
   const [isModal, setIsModal] = useState(false);
-
+  const navigate = useNavigate();
   const closeModal = () => {
     setIsModal(false);
   };
-  const handleOnAdd = (data) => {
-    console.log(data);
-    form.resetFields();
+
+  const handleOnAdd = async (data) => {
+    const response = await fetch(
+      "https://expense-app-562ec-default-rtdb.firebaseio.com/lists.json",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (response.status === 200) {
+      setIsModal(false);
+      form.resetFields();
+      navigate("/");
+    } else {
+      setIsModal(false);
+      console.log(response);
+    }
   };
   return (
     <div>
@@ -57,7 +67,7 @@ const NewList = () => {
           >
             <Form.Item
               label="ပစ္စည်း"
-              name="name"
+              name="item_name"
               rules={[
                 {
                   required: true,
@@ -70,7 +80,7 @@ const NewList = () => {
 
             <Form.Item
               label="ပေးချေသူ"
-              name="person"
+              name="payer_name"
               rules={[
                 {
                   required: true,
@@ -82,11 +92,11 @@ const NewList = () => {
                 placeholder="Choose Payer"
                 options={[
                   {
-                    value: 0,
+                    value: "Zon",
                     label: "Zon",
                   },
                   {
-                    value: 1,
+                    value: "Ashein",
                     label: "Ashein",
                   },
                 ]}
